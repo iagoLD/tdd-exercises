@@ -1,4 +1,6 @@
-from implementations.string_calculator.string_calculator import addition
+import pytest
+
+from string_calculator.string_calculator import addition, InvalidInputException
 
 
 def test_empty_string_returns_zero():
@@ -19,3 +21,8 @@ def test_more_than_two_numbers_addition():
 
 def test_user_defined_delimiter():
     assert addition('//;\n1;2') == 3
+
+
+def test_thrown_exception():
+    with pytest.raises(InvalidInputException):
+        addition('-1,2')
